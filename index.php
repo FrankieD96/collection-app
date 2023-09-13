@@ -35,6 +35,7 @@ $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         <form>
             <input type="text" placeholder="search" name="search">
             <button type=submit>Search</button>  
+        </form>    
     </nav>
     <section class = main-section>
     <?php
@@ -45,33 +46,5 @@ $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     </section>
 </body>
 </html>
-<?php
-// $query = $db->prepare(
-//     "SELECT `teams`.`name`, `shirts`.`season`, `shirts`.`type`, `brands`.`name` as 'brand_name', `leagues`.`name` as 'league_name', `countries`.`name` as 'country' FROM `shirts`
-// 	INNER JOIN `teams`
-// 	ON `shirts`.`team_id` = `teams`.`id`
-// 	INNER JOIN `brands`
-// 	ON `shirts`.`brand_id` = `brands`.`id`
-// 	INNER JOIN `leagues`
-// 	ON `teams`.`league_id` = `leagues`.`id`
-// 	INNER JOIN `countries`
-// 	ON `leagues`.`country_id` = `countries`.`id`;");
-
-// $query->execute();
-
-// $shirts = $query->fetchALL();
-
-// foreach($shirts as $shirt) {
-//     echo "<div class='item-container'>";
-//     echo "<h2>{$shirt['name']}</h2>";
-//     echo "<p>" . $shirt['season'] . " " . $shirt['type'] . " " . "kit</p>";
-//     echo "<div>";
-//     echo "<ul>";
-//     echo "<li>{$shirt['league_name']}";
-//     echo "<li>{$shirt['country']}";
-//     echo "<li>Made by {$shirt['brand_name']}";
-//     echo "</div>";
-//     echo "</div>";
-// }
 
 

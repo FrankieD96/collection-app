@@ -3,3 +3,23 @@
 *::after {
   box-sizing: border-box;
 }
+
+
+
+.navbar {
+  display: flex;
+  border-bottom: solid 1px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  gap: 7.5px;
+}
+
+.item-container {
+  
+}

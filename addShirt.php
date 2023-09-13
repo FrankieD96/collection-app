@@ -18,12 +18,6 @@
 
     <script defer src="js/index.js"></script>
 </head>
-<?php
-
-$db = new PDO('mysql:host=db; dbname=collector_app', 'root', 'password');
-$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-?>
-
 <body>
     <nav class = 'navbar'>
         <h2>Footie Shirts: My Collection</h2>
@@ -37,14 +31,28 @@ $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
             <button type=submit>Search</button>  
         </form>    
     </nav>
-    <section class = main-section>
-    <?php
-    require_once 'ShirtsModel.php';
-     $shirtsModel = new ShirtsModel($db);
-     $allShirts = $shirtsModel->getAllShirts();
-    ?>
+    <section>
+        <form action = "addShirtAction.php">
+            <label for = "tname">Team name</label>
+            <input type = "text" id = "tname" name = "tname"><br>
+            <label for = "season">Season</label>
+            <input type = "text" id = "season" name = "season" placeholder = "yyyy/yy"><br>
+            <label for = "type">Type</label>
+            <select id = "type" name = "type">
+                <option value = "home">home</option>
+                <option value = "away">away</option>
+                <option value = "third">third</option>
+            </select><br>
+            <label for = "league">League</label>
+            <input type = "text" id = "league" name = "league"><br>
+            <label for = "country">Country</label>
+            <input type = "text" id = "country" name = "country"><br>
+            <label for = "brand">Brand</label>
+            <input type = "text" id = "brand" name = "brand"><br>
+            <label for = "imgUrl">Image URL</label>
+            <input type = "text" id = "imgUrl" name = "imgUrl">
+        </form>
     </section>
+
 </body>
 </html>
-
-

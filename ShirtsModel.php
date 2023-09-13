@@ -40,4 +40,9 @@ class ShirtsModel
             echo "</div>";
         }
     }
+
+    public function addNewShirt()
+    {
+        
+    }
 }

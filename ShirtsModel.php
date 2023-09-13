@@ -39,7 +39,5 @@ class ShirtsModel
             echo "<img class='image' src='{$shirt['img_url']}'>";
             echo "</div>";
         }
-
-
     }
 }

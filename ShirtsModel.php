@@ -27,8 +27,8 @@ class ShirtsModel
         $shirts = $query->fetchALL();
 
         foreach($shirts as $shirt) {
-            echo "<div class='item-container'>";
-            echo "<h2>{$shirt['name']}</h2>";
+            echo "<div class ='item-container'>";
+            echo "<p class ='titles'>{$shirt['name']}</p>";
             echo "<p>" . $shirt['season'] . " " . $shirt['type'] . " " . "kit</p>";
             echo "<div>";
             echo "<ul>";

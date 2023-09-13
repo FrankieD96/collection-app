@@ -36,3 +36,9 @@
   box-sizing: border-box;
   padding: 10px;
 }
+
+.titles {
+  font-size: 25px;
+  margin: 0;
+  
+}

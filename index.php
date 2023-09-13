@@ -28,9 +28,9 @@ $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     <nav class = 'navbar'>
         <h2>Footie Shirts: My Collection</h2>
         <div class = 'nav-links'>
-            <p>Home</p>
-            <p>Add</p>
-            <p>Edit</p>
+            <a href="index.php">Home</a>
+            <a href="#">Add</a>
+            <a href="#">Edit</a>
         </div>  
         <form>
             <input type="text" placeholder="search" name="search">

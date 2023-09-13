@@ -20,6 +20,19 @@
   gap: 7.5px;
 }
 
+.main-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.image {
+  max-width: 150px;
+}
+
 .item-container {
-  
+  flex: 1 1 calc(25% - 10px);
+  margin: 5px;
+  box-sizing: border-box;
+  padding: 10px;
 }

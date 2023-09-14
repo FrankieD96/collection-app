@@ -3,3 +3,40 @@
 *::after {
   box-sizing: border-box;
 }
+
+.navbar {
+  display: flex;
+  border-bottom: solid 1px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  gap: 7.5px;
+}
+
+.main-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.image {
+  max-width: 150px;
+}
+
+.item-container {
+  flex: 1 1 calc(25% - 10px);
+  margin: 5px;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.titles {
+  font-size: 25px;
+  margin: 0;
+  
+}

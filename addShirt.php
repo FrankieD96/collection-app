@@ -1,3 +1,8 @@
+<?php 
+$db = new PDO('mysql:host=db; dbname=collector_app', 'root', 'password');
+$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,9 +37,17 @@
         </form>    
     </nav>
     <section>
-        <form action = "addShirtAction.php">
-            <label for = "tname">Team name</label>
-            <input type = "text" id = "tname" name = "tname"><br>
+        <form action = "addShirtAction.php" method = "POST">
+            <label for = "name">Team name</label>
+            <select id = "name" name = "name">
+                <?php
+                    require_once 'ShirtsModel.php';
+                    $shirtsModel = new ShirtsModel($db);
+                    $teams = $shirtsModel->getTeams();
+                    foreach ($teams as $team) {?>
+                    <option value = "<?php  echo $team['id']; ?>"><?php echo $team['name']; ?></option>
+                <?php } ?>
+            </select><br>
             <label for = "season">Season</label>
             <input type = "text" id = "season" name = "season" placeholder = "yyyy/yy"><br>
             <label for = "type">Type</label>
@@ -43,14 +56,39 @@
                 <option value = "away">away</option>
                 <option value = "third">third</option>
             </select><br>
-            <label for = "league">League</label>
-            <input type = "text" id = "league" name = "league"><br>
+            <label for = "league_name">League</label>
+            <select id = "league_name" name = "league_name">
+                <?php
+                    require_once 'ShirtsModel.php';
+                    $shirtsModel = new ShirtsModel($db);
+                    $leagues = $shirtsModel->getLeagues();
+                    foreach ($leagues as $league) {?>
+                    <option value = "<?php echo $league['id']; ?>"><?php echo $league['name']; ?></option>
+                <?php } ?>
+            </select><br>
             <label for = "country">Country</label>
-            <input type = "text" id = "country" name = "country"><br>
-            <label for = "brand">Brand</label>
-            <input type = "text" id = "brand" name = "brand"><br>
-            <label for = "imgUrl">Image URL</label>
-            <input type = "text" id = "imgUrl" name = "imgUrl">
+            <select id = "country" name = "country">
+                <?php
+                    require_once 'ShirtsModel.php';
+                    $shirtsModel = new ShirtsModel($db);
+                    $countries = $shirtsModel->getCountries();
+                    foreach ($countries as $country) {?>
+                    <option value = "<?php echo $country['id']; ?>"><?php echo $country['name']; ?></option>
+                <?php } ?>
+            </select><br>
+            <label for = "brand_name">Brand</label>
+            <select id = "brand_name" name = "brand_name">
+                <?php
+                    require_once 'ShirtsModel.php';
+                    $shirtsModel = new ShirtsModel($db);
+                    $brands = $shirtsModel->getBrands();
+                    foreach ($brands as $brand) {?>
+                    <option value = "<?php echo $brand['id']; ?>"><?php echo $brand['name']; ?></option>
+                <?php } ?>
+            </select><br>
+            <label for = "img_url">Image URL</label>
+            <input type = "text" id = "img_url" name = "img_url">
+            <input type = "submit" value = "add shirt"/>
         </form>
     </section>
 

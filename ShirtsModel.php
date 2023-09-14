@@ -24,20 +24,24 @@ class ShirtsModel
         
         $query->execute();
         
-        $shirts = $query->fetchALL();
+        $data = $query->fetchAll();
 
-        foreach($shirts as $shirt) {
-            echo "<div class ='item-container'>";
-            echo "<p class ='titles'>{$shirt['name']}</p>";
-            echo "<p>" . $shirt['season'] . " " . $shirt['type'] . " " . "kit</p>";
-            echo "<div>";
-            echo "<ul>";
-            echo "<li>{$shirt['league_name']}";
-            echo "<li>{$shirt['country']}";
-            echo "<li>Made by {$shirt['brand_name']}";
-            echo "</div>";
-            echo "<img class='image' src='{$shirt['img_url']}'>";
-            echo "</div>";
+        $shirts = [];
+
+        foreach($data as $shirt) {
+            $shirts[] = new Shirt(
+                    $shirt['name'],
+                    $shirt['season'],
+                    $shirt['type'],
+                    $shirt['brand_name'],
+                    $shirt['league_name'],
+                    $shirt['country'],
+                    $shirt['img_url']    
+            );
         }
+
+        return $shirts;
+
+
     }
 }

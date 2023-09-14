@@ -29,19 +29,30 @@ $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         <h2>Footie Shirts: My Collection</h2>
         <div class = 'nav-links'>
             <a href="index.php">Home</a>
-            <a href="#">Add</a>
-            <a href="#">Edit</a>
+
         </div>  
-        <form>
-            <input type="text" placeholder="search" name="search">
-            <button type=submit>Search</button>  
-        </form>    
+        <p>Search Bar goes here</p>
     </nav>
     <section class = main-section>
     <?php
     require_once 'ShirtsModel.php';
+    require_once 'ShirtClass.php';
      $shirtsModel = new ShirtsModel($db);
-     $allShirts = $shirtsModel->getAllShirts();
+     $shirtsData = $shirtsModel->getAllShirts();
+
+     foreach($shirtsData as $shirt) {
+        echo "<div class ='item-container'>";
+        echo "<p class ='titles'>{$shirt->name}</p>";
+        echo "<p>" . $shirt->season . " " . $shirt->type . " " . "kit</p>";
+        echo "<div>";
+        echo "<ul>";
+        echo "<li>{$shirt->league_name}";
+        echo "<li>{$shirt->country}";
+        echo "<li>Made by {$shirt->brand_name}";
+        echo "</div>";
+        echo "<img class='image' src='{$shirt->img_url}'>";
+        echo "</div>";
+    }
     ?>
     </section>
 </body>

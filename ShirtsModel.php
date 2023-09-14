@@ -39,9 +39,53 @@ class ShirtsModel
                     $shirt['img_url']    
             );
         }
-
         return $shirts;
+    }
 
+    public function addNewShirt($inputtedName, $inputtedSeason, $inputtedType, $inputtedBrand_name, $inputted_img_url)
+    {
+        $query = $this->db->prepare(
+            "INSERT INTO `shirts` (`team_id`,`season`, `type`, `brand_id`, `img_url`)
+             VALUES (:name, :season, :type, :brand_name, :img_url);");
 
+        $query->bindParam('name', $inputtedName);
+        $query->bindParam('season', $inputtedSeason);
+        $query->bindParam('type', $inputtedType);
+        $query->bindParam('brand_name', $inputtedBrand_name);
+        $query->bindParam('img_url', $inputted_img_url);
+
+        $query->execute();
+    }
+
+    public function getTeams()
+    {
+        $query = $this->db->prepare("SELECT `teams`.`name`, `teams`.`id` FROM `teams`;");
+        $query->execute();
+        $teams = $query->fetchAll();
+        return $teams;   
+    }
+
+    public function getLeagues()
+    {
+        $query = $this->db->prepare("SELECT `leagues`.`name`, `leagues`.`id` FROM `leagues`;");
+        $query->execute();
+        $leagues = $query->fetchAll();
+        return $leagues;  
+    }
+
+    public function getCountries()
+    {
+        $query = $this->db->prepare("SELECT `countries`.`name`, `countries`.`id` FROM `countries`;");
+        $query->execute();
+        $countries = $query->fetchAll();
+        return $countries;  
+    }
+
+    public function getBrands()
+    {
+        $query = $this->db->prepare("SELECT `brands`.`name`, `brands`.`id` FROM `brands`;");
+        $query->execute();
+        $brands = $query->fetchAll();
+        return $brands;  
     }
 }

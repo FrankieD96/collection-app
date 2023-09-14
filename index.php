@@ -29,7 +29,8 @@ $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         <h2>Footie Shirts: My Collection</h2>
         <div class = 'nav-links'>
             <a href="index.php">Home</a>
-
+            <a href="addShirt.php">Add</a>
+            <a href="#">Edit</a>
         </div>  
         <p>Search Bar goes here</p>
     </nav>

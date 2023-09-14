@@ -37,6 +37,11 @@ $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         </form>    
     </nav>
     <section>
+        <?php
+        if(isset($_GET['shirtadded'])) {
+            echo 'Shirt added to collection, add another below';
+        }
+        ?>
         <form action = "addShirtAction.php" method = "POST">
             <label for = "name">Team name</label>
             <select id = "name" name = "name">
@@ -56,26 +61,6 @@ $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
                 <option value = "away">away</option>
                 <option value = "third">third</option>
             </select><br>
-            <label for = "league_name">League</label>
-            <select id = "league_name" name = "league_name">
-                <?php
-                    require_once 'ShirtsModel.php';
-                    $shirtsModel = new ShirtsModel($db);
-                    $leagues = $shirtsModel->getLeagues();
-                    foreach ($leagues as $league) {?>
-                    <option value = "<?php echo $league['id']; ?>"><?php echo $league['name']; ?></option>
-                <?php } ?>
-            </select><br>
-            <label for = "country">Country</label>
-            <select id = "country" name = "country">
-                <?php
-                    require_once 'ShirtsModel.php';
-                    $shirtsModel = new ShirtsModel($db);
-                    $countries = $shirtsModel->getCountries();
-                    foreach ($countries as $country) {?>
-                    <option value = "<?php echo $country['id']; ?>"><?php echo $country['name']; ?></option>
-                <?php } ?>
-            </select><br>
             <label for = "brand_name">Brand</label>
             <select id = "brand_name" name = "brand_name">
                 <?php
@@ -91,6 +76,5 @@ $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
             <input type = "submit" value = "add shirt"/>
         </form>
     </section>
-
 </body>
 </html>
